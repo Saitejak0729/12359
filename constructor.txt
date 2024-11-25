@@ -1,0 +1,96 @@
+/Filename: a1.java
+
+package com.sairam;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+@SpringBootApplication
+public class DemoApplication {
+	
+	    public static void main( String[] args )
+	    {
+	        System.out.println( "Hello World!" );
+
+	        ApplicationContext context= new ClassPathXmlApplicationContext("com/sairam/NewFile.xml");
+			sstudent s1=(sstudent)context.getBean("s1");
+			sstudent s2=(sstudent)context.getBean("s2");
+			sstudent s3=(sstudent)context.getBean("s3");
+			
+			
+			System.out.println(s1);
+			System.out.println(s2);
+			System.out.println(s3);
+	    }
+	}
+
+
+//Filename: sstudent.java
+
+package com.sairam;
+
+public class sstudent {
+	private int studentid;
+	private String studentname;
+	public int getStudentid() {
+		return studentid;
+	}
+	public void setStudentid(int studentid) {
+		this.studentid = studentid;
+	}
+	public String getStudentname() {
+		return studentname;
+	}
+	public void setStudentname(String studentname) {
+		this.studentname = studentname;
+	}
+	@Override
+	public String toString() {
+		return "sstudent [studentid=" + studentid + ", studentname=" + studentname + "]";
+	}
+	public sstudent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}
+
+
+
+
+//Filename:xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  https://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <bean class="com.sairam.sstudent" name="s1"> 
+  <property name="studentid">
+  <value>1111</value>
+  </property>
+  <property name="studentname">
+  <value>BHARAT</value>
+  </property>
+  </bean>
+  
+   <bean class="com.sairam.sstudent" name="s2"> 
+   <property name="studentid">
+  <value>2222</value>
+  </property>
+  <property name="studentname">
+  <value>NIKHIL</value>
+  </property>
+  </bean>
+  
+   <bean class="com.sairam.sstudent" name="s3"> 
+   <property name="studentid">
+  <value>3333</value>
+  </property>
+  <property name="studentname">
+  <value>HARI</value>
+  </property>
+  </bean>
+</beans>
